@@ -9,6 +9,7 @@ const progress = document.querySelector('.progress');
 const progressContainer = document.querySelector('.progress-container');
 const title = document.querySelector('#title');
 const cover = document.querySelector('#cover');
+const volumeControl = document.getElementById("volume-control");
 //const img = '../img';
 //song titles
 const songs = ['2Pac-101-Keep-Ya-Head-Up' , '2Pac-102-2-Of-Amerikaz-Most-Wanted' , '2Pac-103-Temptations', '2Pac-104-God-Bless-The-Dead', '2Pac-105-Hail-Mary', '2Pac-106-Me-Against-The-World' , '2Pac-107-How-Do-U-Want-It' , '2Pac-108-So-Many-Tears' , '2Pac-109-Unconditional-Love' , '2Pac-110-Trapped' , '2Pac-111-Life-Goes-On' , '2Pac-112-Hit-Em-Up' , '2Pac-201-Troublesome-96' , '2Pac-202-Brendas-Got-A-Baby' , '2Pac-203-I-Aint-Mad-At-Cha' , '2Pac-204-I-Get-Around' , '2Pac-205-Changes' , '2Pac-206-Califonia-Love' , '2Pac-207-Picture-Me-Rollin' , '2Pac-208-How-Long-Will-They-Mourn-Me' , '2Pac-209-Toss-It-Up' , '2Pac-210-Dear-Mama' , '2Pac-211-All-About-U' , '2Pac-212-To-Live-And-Die-In-L.A.' , '2Pac-213-Heartz-Of-Men'];
@@ -35,6 +36,8 @@ function playSong() {
     musicContainer.classList.add('play');
     playButton.querySelector('i.fas').classList.remove('fa-play');
     playButton.querySelector('i.fas').classList.add('fa-pause');
+
+    updateProgress({ srcElement: audio }); // Call updateProgress to initialize the current time
 
     audio.play();
 
@@ -94,7 +97,18 @@ function setProgress(e) {
     const duration = audio.duration;
 
     audio.currentTime = (clickX / width) * duration;
-}
+};
+
+// Function to set the audio volume
+function setVolume() {
+    audio.volume = volumeControl.value;
+};
+
+// Event listener for when the user interacts with the volume control
+volumeControl.addEventListener("input", setVolume);
+
+// Initialize the audio volume with the default value (1)
+audio.volume = volumeControl.value;
 
 
 //event listeners
@@ -112,6 +126,20 @@ playButton.addEventListener('click', () => {
             playSong();
         }
 });
+
+function updateProgress(e) {
+    const { duration, currentTime } = e.srcElement;
+    const progressPercent = (currentTime / duration) * 100;
+    progress.style.width = `${progressPercent}%`;
+
+    // Calculate current minutes and seconds
+    const currentMinutes = Math.floor(currentTime / 60);
+    const currentSeconds = Math.floor(currentTime % 60);
+
+    // Display current time
+    const currentTimeElement = document.getElementById("current-time");
+    currentTimeElement.innerText = `${currentMinutes}:${currentSeconds < 10 ? '0' : ''}${currentSeconds}`;
+}
 
 //change songs
 

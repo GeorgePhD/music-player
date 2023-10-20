@@ -79,7 +79,7 @@ h2:hover {
     width: 50%;
     margin: 0 auto;
     margin-top: 10rem;
-    height: 600px;
+   /*  height: 650px; */
     border-radius: 1rem;
     padding: 2rem;
     border: 1px solid black;
@@ -98,6 +98,11 @@ h2:hover {
 .img-container {
     width: 350px;
     margin: 0 auto;
+}
+input #volume-control .volume-control {
+
+    background-color: black;
+    color: black;
 }
 .title {
     font-size: 2rem;
@@ -158,6 +163,7 @@ i {
     align-items: center;
     justify-content: center;
     margin-top: 2rem;
+    /* margin-left: -3rem; */
     gap: 1rem;
 }
 button {
@@ -174,7 +180,10 @@ button:hover {
     width: 12rem;
     padding: 1rem;
 }
-
+.current-time {
+    font-size: 1.5rem;
+    color: white;
+}
 footer {
     margin-top: 5rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -185,12 +194,16 @@ footer {
     .cover-img {
         width: 200px;
         display: block;
-        margin-left: 7rem;
+        margin: 0 auto;
         margin-top: 2rem;
-        
+        margin-bottom: 2rem;
+    }
+    .title {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
     }
 }
-@media screen and (width <= 615px) {
+@media screen and (width <= 678px) {
     
     .cover-img {
         width: 200px;
@@ -201,10 +214,44 @@ footer {
     }
 }
 @media screen and (width <= 525px) {
+
+    .music-container {
+        
+        margin: 10rem auto;
+        width: 80%;  
+    }
     
     .cover-img {
-        width: 150px;
+        width: 280px;
         
+    }
+}
+@media screen and (width <= 425px) {
+
+    .cover-img {
+        width: 250px;
+        margin-left: 2rem;
+    }
+}
+@media screen and (width <= 375px) {
+
+    .music-container {
+        width: 90%;  
+    }
+    .cover-img {
+        width: 220px;
+        margin-left: 2rem;
+    }
+}
+@media screen and (width <= 323px) {
+
+    .music-container {
+        width: 90%;  
+        
+    }
+    .cover-img {
+        width: 200px;
+        margin-left: 2rem;
     }
 }
 
