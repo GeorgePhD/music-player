@@ -206,10 +206,7 @@ footer {
 @media screen and (width <= 678px) {
     
     .cover-img {
-        width: 200px;
-        
         margin-left: 3.5rem;
-        margin-top: 2rem;
         
     }
 }
@@ -245,13 +242,8 @@ footer {
 }
 @media screen and (width <= 323px) {
 
-    .music-container {
-        width: 90%;  
-        
-    }
     .cover-img {
         width: 200px;
-        margin-left: 2rem;
     }
 }
 
